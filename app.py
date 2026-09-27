@@ -14,7 +14,7 @@ def carregar_eventos(match_id):
 
 competicoes = carregar_dados()
 
-st.set_page_config(page_title='Dashboard de Futebol', page_icon='⚽', layout='wide')
+st.set_page_config(page_title='Dashboard de Futebol StatsBomb', page_icon='⚽', layout='wide')
 
 with st.sidebar:
 

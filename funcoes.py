@@ -87,15 +87,6 @@ def estatisticas_partida(ev, times):
 
     col1, col2 = st.columns(2)
 
-    # for coluna, time in zip([col1, col2], times):
-    #     with coluna.container(border=True):
-    #         st.markdown(f'**{time}**')
-    #         m1, m2, m3, m4 = st.columns(4)
-    #         m1.metric('Gols', int(estatisticas.loc['Gols', time]))
-    #         m2.metric('Precisão de Chutes', f'{precisao_chute[time]*100:.1f}%')
-    #         m3.metric('Precisão de Passes Certos', f'{precisao_passe[time]*100:.1f}%')
-    #         m4.metric('Precisão de Defesa (Goleiro)', f'{precisao_defesa[time]*100:.1f}%')
-
     for coluna, time in zip([col1, col2], times):
         adversario = [t for t in times if t != time][0]
 
