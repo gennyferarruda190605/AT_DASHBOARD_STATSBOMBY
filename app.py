@@ -1,6 +1,6 @@
 import streamlit as st
 from mplsoccer import Pitch, VerticalPitch
-from funcoes import competicoes, partidas, eventos, estatisticas_partida, mapa_chutes, mapa_passes, jogadores_estatisticas, mapa_passe_jogador, mapa_chutes_jogador, tabela_eventos, comparar_jogadores, mapa_calor_chutes, mapa_calor_chutes_jogador
+from funcoes import competicoes, partidas, eventos, estatisticas_partida, mapa_chutes, mapa_passes, jogadores_estatisticas, mapa_passe_jogador, mapa_chutes_jogador, tabela_eventos, comparar_jogadores, mapa_calor_chutes, mapa_calor_chutes_jogador, grafico_eventos_time
 import time
 
 
@@ -60,7 +60,7 @@ st.title('⚽ Dashboard de Futebol ')
 
 times = [jogo['home_team'], jogo['away_team']]
 
-tab1, tab2, tab3, tab4 = st.tabs(['Visão geral📋', 'Mapas🗺️', 'Comparar jogadores👥', 'Explorar Eventos🔍'])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(['Visão geral📋', 'Mapas🗺️', 'Comparar jogadores👥', 'Explorar Eventos🔍', 'Visulizações📊'])
 
 with tab1:
     st.header(f'{jogo['home_team']} {jogo['home_score']} X {jogo['away_score']} {jogo['away_team']}')
@@ -104,8 +104,12 @@ with tab2:
             st.subheader(f'Mapa de Chutes - {time}')
             st.pyplot(mapa_chutes(ev, time))
 
-        col1.subheader(f'Mapa de Calor de Chutes - {time}')
+
+        st.subheader(f'Mapa de Calor de Chutes - {time}')
         st.pyplot(mapa_calor_chutes(ev, time))
+
+
+        
 
     else:
         
@@ -170,3 +174,8 @@ if enviado:
     filtro = filtro.head(int(qtde))
 
     st.dataframe(filtro[['minute', 'team', 'player', 'type']], use_container_width=True)
+
+
+with tab5:
+    st.subheader('Eventos por time - Gráfico')
+    st.pyplot(grafico_eventos_time(ev))

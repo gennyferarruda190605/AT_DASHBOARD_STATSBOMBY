@@ -339,3 +339,15 @@ def mapa_calor_chutes_jogador(ev, jogador):
     regua.set_label('Quantidade de ações')
 
     return fig
+
+
+def grafico_eventos_time(ev):
+    tipos = ev[ev['type'].isin(['Pass', 'Shot', 'Duel'])]
+
+    fig, ax = plt.subplots(figsize=(8, 5))
+    sns.countplot(data=tipos, x='type', hue='team', ax=ax)
+    ax.set_title('Eventos por time')
+    ax.set_xlabel('Tipo de evento')
+    ax.set_ylabel('Quantidade')
+    
+    return fig
